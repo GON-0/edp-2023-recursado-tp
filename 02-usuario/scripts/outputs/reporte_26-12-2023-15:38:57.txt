@@ -1,0 +1,12 @@
+Usuario: gon
+Uso de CPU: 0.0 %
+Memoria:
+  -Uso: 784.7 MiB
+  -Total: 3878.8 MiB
+  -Libre: 2008.7 MiB
+Procesos
+  -Cantidad: 61
+  -   1 running
+  -  60 sleeping
+  -   0 stopped
+  -   0 zombie
