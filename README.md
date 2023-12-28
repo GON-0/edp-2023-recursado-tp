@@ -5,7 +5,7 @@
 ```
 $ cd 01-generador/
 $ docker build -t generador .
-$ docker run ...
+$ docker run -v $(pwd)/../outputs_gen:/app/outputs -it generador
 ```
 
 ## usuario
