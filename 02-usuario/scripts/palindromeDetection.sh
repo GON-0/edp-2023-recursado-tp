@@ -6,13 +6,15 @@
 #ejemplo: "y" e "Y" o "Reconocer" y "reconocer"
 
 function es_palindromo {
-    REVERSO=$(echo $PALABRA | rev)
-    [[ $PALABRA == $REVERSO ]]
+    STR=$1
+    REVERSO=$(echo $STR | rev)
+    [[ $STR == $REVERSO ]]
     return $?
 }
 
 function esta_repetido {
-    grep -q $PALABRA palindromes.txt
+    STR=$1
+    grep -q $STR palindromes.txt
     return $?
 }
 
@@ -23,14 +25,20 @@ CONT=1
 
 for STR in $CONTENIDO
 do  
-    PALABRA=${STR,,}
-    es_palindromo $PALABRA
+    STR=${STR,,}
+
+    #Limpieza del string, saco "," o "." finales (lo habia hecho como funcion pero hay que hacer echo para devolver string, no queda bien)
+    [[ $STR =~ \.$ ]] && STR=${STR//.} 
+    [[ $STR =~ \,$ ]] && STR=${STR//,}
+    #termina limpieza
+
+    es_palindromo $STR
     PALINDROMO=$?
     if [ $PALINDROMO == 0 ]
     then
-        esta_repetido $PALABRA
+        esta_repetido $STR
         REPETIDO=$?
-        [ $REPETIDO ==  1 ] && echo "$CONT) $PALABRA" >> palindromes.txt && ((CONT++))
+        [ $REPETIDO ==  1 ] && echo "$CONT) $STR" >> palindromes.txt && ((CONT++))
     fi
 done
 

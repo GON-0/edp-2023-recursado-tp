@@ -22,23 +22,21 @@ CONT=1
 for STR in $CONTENIDO
 do
     #Limpieza del string, saco "," o "." finales (lo habia hecho como funcion pero hay que hacer echo para devolver string, no queda bien)
-    REGEX="\.$"
-    [[ $STR =~ $REGEX ]] && STR=${STR//.}
-    REGEX="\,$"
-    [[ $STR =~ $REGEX ]] && STR=${STR//,}
+    [[ $STR =~ \.$ ]] && STR=${STR//.}
+    [[ $STR =~ \,$ ]] && STR=${STR//,}
     #termina limpieza
+
     es_email $STR
     RES=$?
     if [ $RES == 0 ]
     then
         esta_repetido $STR
         REPETIDO=$?
-        echo $CONT
         [ $REPETIDO == 1 ] && echo "$CONT) $STR" >> lista_emails.txt && ((CONT++))
     fi
 done
 
-echo -e "\n--------------------- Emails --------------------------"
+echo -e "\n------------------------ Emails ---------------------------"
 cat lista_emails.txt
 echo -e "-----------------------------------------------------------\n" 
 rm lista_emails.txt
