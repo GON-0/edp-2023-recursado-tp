@@ -17,7 +17,6 @@ function esta_repetido {
 FILE=$1
 CONTENIDO=$(cat $FILE)
 touch lista_emails.txt
-CONT=1
 
 for STR in $CONTENIDO
 do
@@ -32,12 +31,12 @@ do
     then
         esta_repetido $STR
         REPETIDO=$?
-        [ $REPETIDO == 1 ] && echo "$CONT) $STR" >> lista_emails.txt && ((CONT++))
+        [ $REPETIDO == 1 ] && echo $STR >> lista_emails.txt 
     fi
 done
 
 echo -e "\n------------------------ Emails ---------------------------"
-cat lista_emails.txt
+sort -f lista_emails.txt
 echo -e "-----------------------------------------------------------\n" 
 rm lista_emails.txt
 
