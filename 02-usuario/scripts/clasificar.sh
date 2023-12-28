@@ -14,7 +14,7 @@
 
 INPUTS_DIR=./inputs
 OUTPUTS_DIR=./outputs
-mkdir -p $OUTPUT_DIR
+mkdir -p $OUTPUTS_DIR
 CANT_TXT=0
 CANT_IMG=0
 CANT_SND=0
@@ -48,4 +48,4 @@ do
     esac
 done
 
-tar zcvf $OUTPUTS_DIR/outputs.tar.gz $OUTPUTS_DIR
+tar zcvf $OUTPUTS_DIR/outputs.tar.gz $OUTPUTS_DIR > /dev/null #Silenciado

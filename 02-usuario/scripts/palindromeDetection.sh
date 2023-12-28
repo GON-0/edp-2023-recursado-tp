@@ -7,7 +7,7 @@
 
 function es_palindromo {
     STR=$1
-    REVERSO=$(echo $STR | rev)
+    REVERSO=$(echo $STR | rev 2> /dev/null) #Debo silenciar errores de rev porque aparecen solo en docker
     [[ $STR == $REVERSO ]]
     return $?
 }

@@ -10,12 +10,15 @@
 #Usando el servicio cron
 #---
 
+#Esta opcion debe comentarse en caso de no ejecutarse dentro de un docker
+systemctl start cron 
 
 DIR=$(pwd)
 COMANDO="./generador_random.sh"
 
-#Para que se agregue a la lista de las tareas programadas
-crontab -l > job
-echo "*/1 * * * * cd $DIR ; $COMANDO " >> job
+echo "*/1 * * * * cd $DIR ; $COMANDO " > job
 crontab job
 rm job
+
+#Para seguir dentro del docker luego de ejecutar lo anterior:
+bash 
