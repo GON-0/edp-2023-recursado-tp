@@ -34,7 +34,7 @@ do
     fi
 done
 
-echo -e "\n---------------------Palindromes--------------------------"
+echo -e "\n--------------------- Palindromes --------------------------"
 cat palindromes.txt
 echo -e "-----------------------------------------------------------\n" 
 rm palindromes.txt
