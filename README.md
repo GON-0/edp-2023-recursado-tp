@@ -4,7 +4,7 @@
 
 ```
 $ cd 01-generador/
-$ docker build ...
+$ docker build -t generador .
 $ docker run ...
 ```
 
@@ -12,6 +12,6 @@ $ docker run ...
 
 ```
 $ cd 02-usuario/
-$ docker build ...
-$ docker run ...
+$ docker build -t usuario .
+$ docker run -v $(pwd)/../outputs_gen:/app/inputs -v $(pwd)/../textos:/app/textos -v $(pwd)/../outputs_usuario:/app/outputs -it usuario
 ```

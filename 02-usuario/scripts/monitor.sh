@@ -9,7 +9,7 @@ FILENAME="reporte_$DATE.txt"
 MODELO_CPU=$(cat /proc/cpuinfo | grep 'model name' | uniq | cut -d ':' -f2)
 CANT_NUCLEOS=$(cat /proc/cpuinfo | grep processor | wc -l)
 FRECUENCIA=$(cat /proc/cpuinfo | grep 'MHz' | uniq | cut -d ':' -f2)
-USO_CPU="$(top -n 1 -b | grep Cpu | cut -d ' ' -f3) %"
+USO_CPU="$(top -n 2 -b | grep Cpu | tail -1 | cut -d ' ' -f3) %"
 
 
 MEM_TOTAL="$(top -n 1 -b | grep 'MiB Mem' | cut -d ' ' -f6) MiB"
